@@ -56,7 +56,7 @@ function getuvIndex(lat,lon) {
   var queryURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${lat}&lon=${lon}`         // We neeed the URL to query the database
 
 
-$.ajax({                                // before we get into the API and storing it in our local storage, we will call the AJAX from OpenWeatherMap API
+$.ajax({                                
     url: queryURL,
     method: "GET"
   })
@@ -73,6 +73,26 @@ $.ajax({                                // before we get into the API and storin
   
 });
 
+function getfivedayforcast(cityname) {
+  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${APIKey}`         // We neeed the URL to query the database
+
+
+$.ajax({                                
+    url: queryURL,
+    method: "GET"
+  })
+
+  
+  .then(function(response) {
+
+    // Log the queryURL
+    console.log(queryURL);
+
+    console.log(response)
+
+  
+  
+});
 
 
 
