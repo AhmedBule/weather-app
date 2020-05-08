@@ -2,7 +2,18 @@
 
 var APIKey = "b17c321e09f505d0c59f40f8ee7903cf"
 
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + APIKey;         // We neeed the URL to query the database
+$("#getweather").on("click", function(){
+  var cityname = $("#searchterm").val()
+  console.log(cityname);
+  getcurrentweather(cityname);
+  // getfivedayforcast(cityname)
+})
+  function getcurrentweather(cityname){
+
+  
+
+var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${APIKey}&units=imperial`         // We neeed the URL to query the database
+
 
 $.ajax({                                // before we get into the API and storing it in our local storage, we will call the AJAX from OpenWeatherMap API
     url: queryURL,
@@ -17,20 +28,52 @@ $.ajax({                                // before we get into the API and storin
 
     // Log the resulting object
     console.log(response);
+    
+    var lat = response.coord.lat
+
+    var lon = response.coord.lon
+
+    getuvIndex(lat, lon);
 
     // Transfer content to HTML
     $(".city").html("<h1>" + response.name + " Weather Details</h1>");
     $(".wind").text("Wind Speed: " + response.wind.speed);
     $(".humidity").text("Humidity: " + response.main.humidity);
-    $(".uv-index").text("UV Index: " + response.uv.index);
+    $(".imgtag").attr("src", `https://openweathermap.org/img/wn/${response.weather[0].icon}.png`);
 
-    // Next, we need to add the temperature to html. In this case, we will use the fahrenheight. 
-    $(".temopture (F) " + tempF.toFixed(1));
+    $(".temp").text("Temperature: " + response.main.temp);
 
     // Thereafter, we have to save the data in our local storage. 
         console.log("Wind Speed: " + response.wind.speed);
         console.log("Humidity: " + response.main.humidity);
-       console.log("UV Index: " + response.uv.index);
-        console.log("Temperature (F): " + tempF);
+  
+     
 
   });
+}
+
+function getuvIndex(lat,lon) {
+  var queryURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${lat}&lon=${lon}`         // We neeed the URL to query the database
+
+
+$.ajax({                                // before we get into the API and storing it in our local storage, we will call the AJAX from OpenWeatherMap API
+    url: queryURL,
+    method: "GET"
+  })
+
+  
+  .then(function(response) {
+
+    // Log the queryURL
+    console.log(queryURL);
+
+    console.log(response)
+
+    $(".uv-index").text("UV-Index: " + response.value);
+  
+});
+
+
+
+
+}
