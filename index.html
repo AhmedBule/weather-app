@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script> 
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <div class="container">
+
+
+        <!-- Jumbotron for Title -->
+        <div class="jumbotron" style="background-color: #20315A ; color: white;">
+          <h1 class="text-center">
+            <strong>
+              <i class="fa fa-weather-o"></i> Weather Dashboard</strong>
+          </h1>
+        </div>
+        <!-- Here we create the text box for capturing the search term-->
+        <div class="form-group">
+            <label for="search">Search for a City:</label>
+            <input type="text" class="form-control" id="search-term">
+            <button type="submit">Submit</button>
+          </div>
+  
+          <!-- The data will appear in here -->
+  <div class="wind"></div>
+  <div class="title">Wind</div>
+  <div class="value">TBD</div>
+
+  <div class="humidity"></div>
+  <div class="title">Humidity</div>
+  <div class="value">TBD</div>
+
+  <div class="temp"></div>
+  <div class="title">Temperature</div>
+  <div class="value">TBD</div>
+
+  <div class="uv-index"></div>
+  <div class="title">UV-Index</div>
+  <div class="value">TBD</div>
+    
+</body>
+<script src="https://code.jquery.com/jquery.js"></script>
+</html>
