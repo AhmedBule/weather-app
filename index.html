@@ -3,28 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
    
     <title>Weather Dashboard</title>
 </head>
 <body>
+
+  <!-- All columns in a row have to equal 12 -->
     <div class="container">
 
+      <div class="row firstRow">
 
-        <!-- Jumbotron for Title -->
         <div class="jumbotron" style="background-color: #20315A ; color: white;">
           <h1 class="text-center">
             <strong>
               <i class="fa fa-weather-o"></i> Weather Dashboard</strong>
           </h1>
         </div>
-        <!-- Here we create the text box for capturing the search term-->
-        <div class="form-group">
+
+      </div>
+
+      <div class="row secondRow">
+
+        <div class="col-sm-4 firstColumn">
+          <div class="form-group">
             <label for="search">Search for a City:</label>
             <input type="text" class="form-control" id="searchterm">
             <button id="getweather" type="submit">Submit</button>
           </div>
+        </div>
+
+        <div class="col-sm-8 secondColumn">
+          <div class="row firstRow-of-secondColumn">dsadsa</div>
+          <div class="row secondRow-of-secondColumn">
+            <div class="row firstRow-of-secondRow-of-secondColumn"> 5Day Forcast</div>
+            <div id ="dataFromPromise" class="row secondRow-of-secondRow-of-secondColumn">
+                    <!-- Append data here-->
+            <div id="getfivedayforcast"></div>
+            <div id="getfivedayhumidity"></div>
+            <img class="imgtag" src="" alt="Icon">
+            <div class="uv-index"></div>
+            </div>
+          </div>
+
+          <!--<div class="row thirdRow"</div> -->
+        </div>
+
+  
+
+      </div>
+      
+
+<!--         
+        <div class="jumbotron" style="background-color: #20315A ; color: white;">
+          <h1 class="text-center">
+            <strong>
+              <i class="fa fa-weather-o"></i> Weather Dashboard</strong>
+          </h1>
+        </div> -->
+        <!-- Here we create the text box for capturing the search term-->
+        <!-- <div class="form-group">
+            <label for="search">Search for a City:</label>
+            <input type="text" class="form-control" id="searchterm">
+            <button id="getweather" type="submit">Submit</button>
+          </div> -->
+      
   
           <!-- The data will appear in here -->
   <div class="wind"></div>
@@ -33,8 +77,13 @@
   <div class="humidity"></div>
   <div class="temp"></div>
   
-          <img class="imgtag" src="" alt="Icon">
-  <div class="uv-index"></div>
+          <!-- <img class="imgtag" src="" alt="Icon">
+  <div class="uv-index"></div> -->
+
+
+  
+
+      <!-- <div id="container"></div> -->
   
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="script.js"></script> 

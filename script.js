@@ -6,7 +6,7 @@ $("#getweather").on("click", function(){
   var cityname = $("#searchterm").val()
   console.log(cityname);
   getcurrentweather(cityname);
-  // getfivedayforcast(cityname)
+  get5dayforcast(cityname);
 })
   function getcurrentweather(cityname){
 
@@ -70,11 +70,12 @@ $.ajax({
     console.log(response)
 
     $(".uv-index").text("UV-Index: " + response.value);
-  
+   
 });
+}
 
-function getfivedayforcast(cityname) {
-  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${APIKey}`         // We neeed the URL to query the database
+function get5dayforcast(cityname) {
+  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${APIKey}&units=imperial`         // We neeed the URL to query the database
 
 
 $.ajax({                                
@@ -88,12 +89,45 @@ $.ajax({
     // Log the queryURL
     console.log(queryURL);
 
-    console.log(response)
+    console.log("get5dayforcast", response)
+    var fivedayforcast = $("<div/>")
+
+    var container = $("<div/>");
+    $(container).attr("class", "col-sm-2")
+    container.setAttribute("class", "col-sm-2")
+
+    var forcast = $("<p/>");
+    var humidity = $("<p/>");
+    var uvIndex = $("<p/>");
+    var temperature = $("<p/>");
+
+    // create four more variables that represent the tags within the HTMl
+    //At the end of the loop, append everything to var container
+
+    for (var i = 0; i < 5; i++) {
+      console.log("fivedayforcasttemp", response.list[i].main.temp);
+
+      forcast.innerHTML = "Forcast = " + response.list[i].main.forcast
+
+      container.append(forcast);
+
+     // $("<div>" + "<p>" + "Temperature " + response.list[i].main.temp + "</p>" +  "<p>" + "Humidity " + response.list[i].main.humidity + "</p>" + "</div>")
+      
+      container.append("<p>" + "Temperature " + response.list[i].main.temp + "</p>" );
+
+      container.append("<p>" + response.list[i].dt_txt + "</p>" );
+
+      container.append("<p>" + "Humidity " + response.list[i].main.humidity + "</p>" );
+
 
   
-  
-});
+    };
 
-
-
+    console.log(container);
+    $("<div>" + "<p>" + "Temperature " + response.list[i].main.temp + "</p>" +  "<p>" + "Humidity " + response.list[i].main.humidity + "</p>" + "</div>")
+    $("#dataFromPromise").html(container);
+  });
+    //console.log("fivedayforcasttemp", response.list[0].main.temp);
+   // console.log("fivedayforcasthumidity", response.list[0].main.humidity);
 }
+

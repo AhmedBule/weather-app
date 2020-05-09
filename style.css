@@ -11,3 +11,28 @@ header {
     color: blue;
     font-size: 24px;
 }
+
+.firstRow-of-secondColumn {
+  background: lightcoral;
+  height: 100px;
+  padding: 10px;
+}
+
+
+.secondRow-of-secondColumn {
+  background: darkgreen;
+  height: 100px;
+  padding: 10px;
+}
+
+.secondRow-of-secondRow-of-secondColumn{
+  background: blue;
+  height: 100px;
+  width: 100%
+}
+
+.firstRow-of-secondRow-of-secondColumn{
+  background: chocolate;
+  height: 100px;
+  width: 100%
+}
