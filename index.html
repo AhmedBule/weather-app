@@ -32,10 +32,18 @@
             <input type="text" class="form-control" id="searchterm">
             <button id="getweather" type="submit">Submit</button>
           </div>
+          <div id="citySearch"></div>
         </div>
 
         <div class="col-sm-8 ml-3 secondColumn">
-          <div class="row firstRow-of-secondColumn"></div>
+          <div class="row firstRow-of-secondColumn">
+            <div id="city-data-column" class="col">
+              <h1 class="city"></h1>
+              <div class="wind"></div>
+              <div class="humidity"></div>
+              <div class="temp"></div>
+            </div>
+          </div>
           <div class="row secondRow-of-secondColumn">
             <!-- <div class="row firstRow-of-secondRow-of-secondColumn"> 5-Day Forcast</div> -->
             <h1>Five Day Forecast</h1>
@@ -97,35 +105,6 @@
       </div>
       
 
-<!--         
-        <div class="jumbotron" style="background-color: #20315A ; color: white;">
-          <h1 class="text-center">
-            <strong>
-              <i class="fa fa-weather-o"></i> Weather Dashboard</strong>
-          </h1>
-        </div> -->
-        <!-- Here we create the text box for capturing the search term-->
-        <!-- <div class="form-group">
-            <label for="search">Search for a City:</label>
-            <input type="text" class="form-control" id="searchterm">
-            <button id="getweather" type="submit">Submit</button>
-          </div> -->
-      
-  
-          <!-- The data will appear in here -->
-  <div class="wind"></div>
-  
-
-  <div class="humidity"></div>
-  <div class="temp"></div>
-  
-          <!-- <img class="imgtag" src="" alt="Icon">
-  <div class="uv-index"></div> -->
-
-
-  
-
-      <!-- <div id="container"></div> -->
   
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="script.js"></script> 

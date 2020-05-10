@@ -7,6 +7,8 @@ $("#getweather").on("click", function(){
   console.log(cityname);
   getcurrentweather(cityname);
   get5dayforcast(cityname);
+
+  window.localStorage.setItem('cityName', cityname)
 })
   function getcurrentweather(cityname){
 
@@ -36,7 +38,7 @@ $.ajax({                                // before we get into the API and storin
     getuvIndex(lat, lon);
 
     // Transfer content to HTML
-    $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+    $(".city").text(response.name + " Weather Details");
     $(".wind").text("Wind Speed: " + response.wind.speed);
     $(".humidity").text("Humidity: " + response.main.humidity);
     $(".imgtag").attr("src", `https://openweathermap.org/img/wn/${response.weather[0].icon}.png`);
@@ -47,7 +49,9 @@ $.ajax({                                // before we get into the API and storin
         console.log("Wind Speed: " + response.wind.speed);
         console.log("Humidity: " + response.main.humidity);
   
-     
+     let myCityName = window.localStorage.getItem("cityName")
+
+     $('#citySearch').html('<div>' +myCityName + '</div>');
 
   });
 }
@@ -104,7 +108,7 @@ $.ajax({
     // create four more variables that represent the tags within the HTMl
     //At the end of the loop, append everything to var container
 
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < response.list.length; i=i+8) {
       console.log("fivedayforcasttemp", response.list[i].main.temp);
 
       // forcast.innerHTML = "Forcast = " + response.list[i].main.forcast
