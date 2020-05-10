@@ -92,9 +92,9 @@ $.ajax({
     console.log("get5dayforcast", response)
     var fivedayforcast = $("<div/>")
 
-    var container = $("<div/>");
-    $(container).attr("class", "col-sm-2")
-    container.setAttribute("class", "col-sm-2")
+    var container = $("<div class='row mt-3'/>");
+    // $(container).attr("class", "col-sm-2")
+    // container.setAttribute("class", "col-sm-2")
 
     var forcast = $("<p/>");
     var humidity = $("<p/>");
@@ -107,25 +107,28 @@ $.ajax({
     for (var i = 0; i < 5; i++) {
       console.log("fivedayforcasttemp", response.list[i].main.temp);
 
-      forcast.innerHTML = "Forcast = " + response.list[i].main.forcast
+      // forcast.innerHTML = "Forcast = " + response.list[i].main.forcast
 
-      container.append(forcast);
+      // container.append(forcast);
 
      // $("<div>" + "<p>" + "Temperature " + response.list[i].main.temp + "</p>" +  "<p>" + "Humidity " + response.list[i].main.humidity + "</p>" + "</div>")
       
-      container.append("<p>" + "Temperature " + response.list[i].main.temp + "</p>" );
-
-      container.append("<p>" + response.list[i].dt_txt + "</p>" );
-
-      container.append("<p>" + "Humidity " + response.list[i].main.humidity + "</p>" );
-
-
+      container.append(
+        `<div class='col mr-3' style='background-color: blue; color: white'> 
+        <p>Temperature: ${response.list[i].main.temp} </p>
+        <br/>
+        <p> ${response.list[i].dt_txt} </p> 
+        <br/>
+        <p>Humidity ${response.list[i].main.humidity}</p>
+        </div>
+        `
+      );
   
     };
 
-    console.log(container);
-    $("<div>" + "<p>" + "Temperature " + response.list[i].main.temp + "</p>" +  "<p>" + "Humidity " + response.list[i].main.humidity + "</p>" + "</div>")
     $("#dataFromPromise").html(container);
+    console.log(container);
+    // $("<div>" + "<p>" + "Temperature " + response.list[i].main.temp + "</p>" +  "<p>" + "Humidity " + response.list[i].main.humidity + "</p>" + "</div>")
   });
     //console.log("fivedayforcasttemp", response.list[0].main.temp);
    // console.log("fivedayforcasthumidity", response.list[0].main.humidity);
