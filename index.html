@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./Assets/style.css">
    
     <title>Weather Dashboard</title>
 </head>
@@ -31,6 +31,7 @@
             <label for="search">Search for a City:</label>
             <input type="text" class="form-control" id="searchterm">
             <button id="getweather" type="submit">Submit</button>
+            
           </div>
           <div id="citySearch"></div>
         </div>
@@ -42,6 +43,8 @@
               <div class="wind"></div>
               <div class="humidity"></div>
               <div class="temp"></div>
+              <img  id = "imgtag" src="" alt="">
+              <p id="uvindex"></p>
             </div>
           </div>
           <div class="row secondRow-of-secondColumn">
@@ -91,13 +94,13 @@
               
                     <!-- Append data here-->
             <div id="getfivedayforcast"></div>
-            <div id="getfivedayhumidity"></div>
+            <!--<div id="getfivedayhumidity"></div>
           
             <div class="uv-index"></div>
             </div>
           </div>
 
-          <!--<div class="row thirdRow"</div> -->
+          <div class="row thirdRow"</div> -->
         </div>
 
   
@@ -107,7 +110,7 @@
 
   
   <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="script.js"></script> 
+  <script src="./Assets/script.js"></script> 
 </body>
 
 </html>

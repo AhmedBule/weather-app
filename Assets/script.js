@@ -1,14 +1,23 @@
 // Here we run our AJAX call to the OpenWeatherMap API
 
 var APIKey = "b17c321e09f505d0c59f40f8ee7903cf"
+ var previousSearch = JSON.parse(localStorage.getItem("previouscities")) || []
+// var previousSearch = localStorage.getItem("cityName")
+function displayLocalstorage (){
+  console.log(previousSearch)
+  for (let i = 0; i < previousSearch.length; i++) {
+    $("#citySearch").append(`<button class = "cityDisplay"> ${previousSearch[i]}</button>`)
+  }
+};  
+displayLocalstorage()
 
 $("#getweather").on("click", function(){
   var cityname = $("#searchterm").val()
   console.log(cityname);
   getcurrentweather(cityname);
   get5dayforcast(cityname);
-
-  window.localStorage.setItem('cityName', cityname)
+  previousSearch.push(cityname)
+  window.localStorage.setItem('previouscities', JSON.stringify(previousSearch))
 })
   function getcurrentweather(cityname){
 
@@ -41,7 +50,7 @@ $.ajax({                                // before we get into the API and storin
     $(".city").text(response.name + " Weather Details");
     $(".wind").text("Wind Speed: " + response.wind.speed);
     $(".humidity").text("Humidity: " + response.main.humidity);
-    $(".imgtag").attr("src", `https://openweathermap.org/img/wn/${response.weather[0].icon}.png`);
+    $("#imgtag").attr("src", `https://openweathermap.org/img/wn/${response.weather[0].icon}.png`);
 
     $(".temp").text("Temperature: " + response.main.temp);
 
@@ -73,7 +82,7 @@ $.ajax({
 
     console.log(response)
 
-    $(".uv-index").text("UV-Index: " + response.value);
+    $("#uvindex").text("uvindex: " + response.value);
    
 });
 }
@@ -102,7 +111,7 @@ $.ajax({
 
     var forcast = $("<p/>");
     var humidity = $("<p/>");
-    var uvIndex = $("<p/>");
+    // var uvIndex = $("<p/>");
     var temperature = $("<p/>");
 
     // create four more variables that represent the tags within the HTMl
@@ -120,10 +129,12 @@ $.ajax({
       container.append(
         `<div class='col mr-3' style='background-color: blue; color: white'> 
         <p>Temperature: ${response.list[i].main.temp} </p>
-        <br/>
-        <p> ${response.list[i].dt_txt} </p> 
-        <br/>
+        <img src = "https://openweathermap.org/img/wn/${response.list[i].weather[0].icon}.png" />
+        
+        <p> ${response.list[i].dt_txt.split(" ")[0]} </p> 
+        
         <p>Humidity ${response.list[i].main.humidity}</p>
+
         </div>
         `
       );
